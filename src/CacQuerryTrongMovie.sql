@@ -1,10 +1,5 @@
 use Movie;
 
--- khoa ngoai cua table Staff
-alter table Staff add constraint fk_Staff_Cinema foreign key (IDCinema) references Cinema(IDCinema) on delete cascade on update cascade;
-
--- khoa ngoai cua table Room
-alter table Room add constraint fk_Cinema_Room foreign key (IDCinema) references Cinema(IDCinema) on delete cascade on update cascade;
 
 -- khoa ngoai cua table Schedule
 alter table Schedule add constraint fk_Schedule_Room foreign key(IDRoom) references Room(IDRoom) on delete cascade on update cascade;
@@ -19,15 +14,11 @@ alter table Ticket add constraint fk_Staff_Ticket foreign key (IDStaff) referenc
 -- khoa ngoai cua table Seat
 alter table Seat add constraint fk_Room_Seat foreign key (IDRoom) references Room(IDRoom) on delete cascade on update cascade;
 
-
 -- insert du lieu mau cho table Customer
 insert into Customer(CustomerName, CustomerPhoneNumber, CustomerType) values ('Duong', '0905040302', 'Nguoi Lon'), ('Hai', '0847576756', 'Tre em');
  select * from Customer;
  
  -- insert du lieu mau cho table Staff
-insert into Staff(Staff_Name, Staff_Mail, IDCinema) values ('Duy', 'Duy123432@gmail.com', '400' ), ('Khanh','Khanh98@gmail.com','400');
-select * from Staff;
+insert into Staff(Staff_Name, Staff_Mail) values ('Duy', 'Duy123432@gmail.com' ), ('Khanh','Khanh98@gmail.com');
 
--- insert du lieu mau cho table Cinema
-insert into Cinema(IDCinema, CinemaName, Adress, PhoneNumber) values ('400', 'CGV', 'Vincom Bach Dang', '0111222333');
 

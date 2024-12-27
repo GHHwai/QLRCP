@@ -16,10 +16,8 @@ create table Staff (
 IDStaff					int auto_increment,
 Staff_Name				nvarchar(100) not null,
 Staff_Mail				nvarchar(100) not null,
-IDCinema				int not null,
 constraint pk_Staff	primary key (IDStaff)
 );
-
 
 
 -- tao bang Movie 
@@ -36,20 +34,10 @@ update_at timestamp default current_timestamp on update current_timestamp,
 constraint pk_Movie primary key (IDMovie)
 );
  
- 
- -- tao bang Cinema
-create table Cinema (
-IDCinema				int auto_increment,
-CinemaName				nvarchar(255) not null,
-Adress					nvarchar(255) not null,
-PhoneNumber				varchar(15) not null check (PhoneNumber regexp '^[0-9]{10,15}$'),
-constraint pk_Cinema primary key (IDCinema)
-);
 
 -- tao bang Room
 create table Room (
 IDRoom				int auto_increment,
-IDCinema			int not null,	-- Trung gian cho Movie - Cinema
 RoomName			nvarchar(100) not null,
 capacity			int not null,	-- Suc chua cua phong
 Status 				enum('Con trong', 'Het cho') default 'Con trong',
@@ -57,6 +45,7 @@ create_at timestamp default CURRENT_TIMESTAMP,
 update_at timestamp default current_timestamp on update current_timestamp,
 constraint pk_Room primary key (IDRoom)
 );
+
 
 -- tao bang Schedule (Lich phim)
 create table Schedule (
@@ -84,7 +73,6 @@ IDStaff 			int not null,
 constraint pk_Ticket primary key (IDTicket)
 );
 
-
 create table Seat (
 IDSeat     		 int auto_increment,
 IDRoom     		 int not null,
@@ -95,4 +83,3 @@ create_at  		 timestamp default CURRENT_TIMESTAMP,
 update_at 		 timestamp default current_timestamp on update current_timestamp,
 constraint pk_Seat primary key (IDSeat)
 );
-
